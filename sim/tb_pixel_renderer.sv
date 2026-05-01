@@ -8,6 +8,8 @@ module tb_pixel_renderer;
     logic       visible_area;
     logic [9:0] pixel_x;
     logic [9:0] pixel_y;
+    logic [4:0] active_block_x;
+    logic [4:0] active_block_y;
     logic [3:0] vga_r;
     logic [3:0] vga_g;
     logic [3:0] vga_b;
@@ -16,6 +18,8 @@ module tb_pixel_renderer;
         .visible_area(visible_area),
         .pixel_x(pixel_x),
         .pixel_y(pixel_y),
+        .active_block_x(active_block_x),
+        .active_block_y(active_block_y),
         .vga_r(vga_r),
         .vga_g(vga_g),
         .vga_b(vga_b)
@@ -43,6 +47,8 @@ module tb_pixel_renderer;
     endtask
 
     initial begin
+        active_block_x = 5'd8;
+        active_block_y = 5'd0;
         check_color(10'd0,   10'd0,   1'b0, 4'h0, 4'h0, 4'h0, "Blanking");
         check_color(10'd160, 10'd40,  1'b1, 4'hF, 4'hF, 4'h0, "Border");
         check_color(10'd180, 10'd60,  1'b1, 4'h2, 4'h2, 4'h6, "Grid line");

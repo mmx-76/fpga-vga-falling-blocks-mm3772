@@ -1,6 +1,6 @@
 // FallingBlocksTop.sv
 // MM3772 - EE22005 FPGA VGA Falling-Block Game
-// Static VGA top-level integration plus cleaned button-input pulse generation.
+// Top-level integration including button pulse input, stage-1 falling block controller, VGA timing, and renderer.
 
 module FallingBlocksTop (
     input  logic       CLOCK_50,
@@ -25,6 +25,9 @@ module FallingBlocksTop (
     logic down_pulse;
     logic reset_pulse;
 
+    logic [4:0] active_block_x;
+    logic [4:0] active_block_y;
+
     player_button_inputs u_player_button_inputs (
         .clk(CLOCK_50),
         .reset_n(reset_n),
@@ -36,6 +39,17 @@ module FallingBlocksTop (
         .right_pulse(right_pulse),
         .down_pulse(down_pulse),
         .reset_pulse(reset_pulse)
+    );
+
+    falling_block_controller u_falling_block_controller (
+        .clk(CLOCK_50),
+        .reset_n(reset_n),
+        .reset_pulse(reset_pulse),
+        .left_pulse(left_pulse),
+        .right_pulse(right_pulse),
+        .down_pulse(down_pulse),
+        .block_x(active_block_x),
+        .block_y(active_block_y)
     );
 
     vga_timing u_vga_timing (
@@ -52,13 +66,11 @@ module FallingBlocksTop (
         .visible_area(visible_area),
         .pixel_x(pixel_x),
         .pixel_y(pixel_y),
+        .active_block_x(active_block_x),
+        .active_block_y(active_block_y),
         .vga_r(VGA_R),
         .vga_g(VGA_G),
         .vga_b(VGA_B)
     );
-
-    // Pulses are generated and ready for future gameplay logic integration.
-    logic unused_btn_pulses;
-    assign unused_btn_pulses = left_pulse ^ right_pulse ^ down_pulse ^ reset_pulse;
 
 endmodule
