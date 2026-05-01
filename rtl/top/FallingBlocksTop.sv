@@ -11,10 +11,15 @@ module FallingBlocksTop (
     output logic [3:0]  VGA_G,
     output logic [3:0]  VGA_B,
     output logic        VGA_HS,
-    output logic        VGA_VS
+    output logic        VGA_VS,
+    output logic        VGA_CLK,
+    output logic        VGA_BLANK_N,
+    output logic        VGA_SYNC_N
 );
 
     logic reset_n;
+    logic vga_clk_25mhz;
+
     logic key_left_n;
     logic key_right_n;
     logic key_down_n;
@@ -41,6 +46,18 @@ module FallingBlocksTop (
     assign key_right_n = KEY[2];
     assign key_down_n  = KEY[3];
     assign sw_unused   = SW;
+
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n) begin
+            vga_clk_25mhz <= 1'b0;
+        end else begin
+            vga_clk_25mhz <= ~vga_clk_25mhz;
+        end
+    end
+
+    assign VGA_CLK     = vga_clk_25mhz;
+    assign VGA_BLANK_N = visible_area;
+    assign VGA_SYNC_N  = 1'b1;
 
     player_button_inputs u_player_button_inputs (
         .clk(CLOCK_50),

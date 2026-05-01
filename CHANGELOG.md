@@ -4,6 +4,7 @@ All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
 ### Added
+- 2026-05-01 (fix/de1-soc-vga-control-ports): Added DE1-SoC VGA control outputs (`VGA_CLK`, `VGA_BLANK_N`, `VGA_SYNC_N`) in `rtl/top/FallingBlocksTop.sv`, including a 25 MHz `VGA_CLK` divider from `CLOCK_50` and visible-area blanking drive to address blank monitor output after successful Quartus programming.
 - Added final evidence package documentation for Issue #8 on `docs/final-evidence-package`, including `docs/final_hardware_validation.md`, `docs/video_demo_script.md`, `docs/mahara_evidence_summary.md`, and `docs/change_management_evidence_summary.md` for MM3772 final submission readiness.
 - 2026-05-01 (Issue #7): Added `quartus/quartus_integration_notes.md` documenting Quartus top-level expectations, required RTL file list, board assumptions, manual setup steps, and required evidence capture items for MM3772.
 - 2026-05-01 (Issue #7): Added lightweight integration testbench `sim/tb_top_integration.sv` to instantiate `FallingBlocksTop` with FPGA-style ports and check for basic output activity without unknown values.

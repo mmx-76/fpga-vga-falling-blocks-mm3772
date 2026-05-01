@@ -34,3 +34,5 @@ Student ID: **MM3772**
 
 - 2026-05-01: Quartus Prime Analysis & Synthesis currently fails on this branch baseline due to duplicate declarations/instances and top-level syntax errors in `rtl/video/pixel_renderer.sv` and `rtl/top/FallingBlocksTop.sv`; fixes are now committed on `fix/quartus-analysis-synthesis-errors`, and Quartus Analysis & Synthesis must be re-run after merge to capture updated EV-006 evidence for MM3772.
 - 2026-05-01: Quartus Prime Analysis & Synthesis re-run on the post-top-level-fix baseline progressed to `rtl/video/pixel_renderer.sv` but failed with combinational-coding error (latch inference on `cell_x`/`cell_y` in `always_comb`, reported at line 38). Follow-up fix prepared on `fix/pixel-renderer-combinational-logic`; rerun required to capture clean EV-006 synthesis evidence for MM3772.
+
+- 2026-05-01: Quartus compile/programming succeeded with CLOCK_50/KEY/SW/VGA color+sync pin mapping present, but VGA output remained blank until DE1-SoC control outputs (`VGA_CLK`, `VGA_BLANK_N`, `VGA_SYNC_N`) were exposed and driven in `rtl/top/FallingBlocksTop.sv` on branch `fix/de1-soc-vga-control-ports`.
