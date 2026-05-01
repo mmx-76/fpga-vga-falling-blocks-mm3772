@@ -23,6 +23,8 @@ Student ID: **MM3772**
 | EV-008 | TBC | 1.10 | GitHub Artifacts | Linked issue, branch, commits, review notes, and merge trail for each milestone. | Planned |
 | EV-009 | 2026-05-01 | 4.1, 1.10 | Source + Testbench + Commit History | GitHub Issue #6 implemented on `feature/line-clear-score-state`: added line-clear module and game-state/score-enabled gameplay pipeline (`line_clearer`, updated controller, top, and renderer) with Questa-compatible verification for full-row detect, clear+shift, score increment, and spawn-blocked game-over behaviour. | Complete |
 
+| EV-010 | 2026-05-01 | 4.1, 1.10 | Documentation + Commit History | GitHub Issue #8 implemented on `docs/final-evidence-package`: produced final hardware validation checklist, demo script, Mahara evidence summary, and change-management evidence summary; updated changelog/evidence log for MM3772 final packaging. | Complete |
+
 ## Evidence Handling Notes
 - Each milestone should update this table and cross-reference commit hash and pull request number.
 - File/report naming should include `MM3772` where practical.

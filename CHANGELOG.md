@@ -4,6 +4,7 @@ All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
 ### Added
+- Added final evidence package documentation for Issue #8 on `docs/final-evidence-package`, including `docs/final_hardware_validation.md`, `docs/video_demo_script.md`, `docs/mahara_evidence_summary.md`, and `docs/change_management_evidence_summary.md` for MM3772 final submission readiness.
 - 2026-05-01 (Issue #7): Added `quartus/quartus_integration_notes.md` documenting Quartus top-level expectations, required RTL file list, board assumptions, manual setup steps, and required evidence capture items for MM3772.
 - 2026-05-01 (Issue #7): Added lightweight integration testbench `sim/tb_top_integration.sv` to instantiate `FallingBlocksTop` with FPGA-style ports and check for basic output activity without unknown values.
 - Issue #6 (`feature/line-clear-score-state`): added `rtl/game/line_clearer.sv` for synthesizable full-row detection, clear, and row-compaction logic.
@@ -29,6 +30,12 @@ All notable project and evidence-plan changes are documented in this file.
 - Added Questa-compatible testbenches `sim/tb_board_memory.sv` and `sim/tb_collision_checker.sv`; updated `sim/tb_falling_block_controller.sv` and `sim/tb_pixel_renderer.sv` for board-memory/collision behaviour coverage.
 
 ### Changed
+- Updated `CHANGELOG.md` and `EVIDENCE_LOG.md` with final hardware validation/evidence packaging traceability for Issue #8 (MM3772).
+- Updated evidence artifacts to include Issue #5 board memory and collision-locking implementation traceability for MM3772.
+- Updated evidence artifacts to include Issue #4 stage-1 falling block core implementation traceability for MM3772.
+- Updated evidence artifacts to include Issue #1 implementation traceability for MM3772.
+- Updated evidence artifacts to include Issue #2 static VGA renderer implementation traceability for MM3772.
+- Updated evidence artifacts to include Issue #3 button debounce and edge-detection implementation traceability for MM3772.
 - 2026-05-01 (Issue #7): Updated `rtl/top/FallingBlocksTop.sv` to be the clear Quartus-facing FPGA top-level interface using `CLOCK_50`, `KEY[3:0]`, `SW[9:0]`, and VGA sync/color outputs while preserving existing game/video/input integration modules.
 - 2026-05-01 (Issue #7): Updated evidence artifacts for Quartus integration and FPGA hardware demo preparation milestone traceability.
 
