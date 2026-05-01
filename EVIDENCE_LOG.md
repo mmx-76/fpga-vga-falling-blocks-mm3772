@@ -12,8 +12,8 @@ Student ID: **MM3772**
 | ID | Date | Skill | Artifact Type | Description | Status |
 |---|---|---|---|---|---|
 | EV-001 | 2026-05-01 | 1.10 | Pull Request | Initial documentation PR defining requirements, workflow, and test strategy. | Complete |
-| EV-002 | TBC | 4.1 | Source + Commit History | Initial SystemVerilog top-level and module stubs with MM3772 identification. | Planned |
-| EV-003 | TBC | 4.1 | Questa Simulation | Testbench results and waveform captures for timing and game logic blocks. | Planned |
+| EV-002 | 2026-05-01 | 4.1, 1.10 | Source + Testbench + Commit History | GitHub Issue #1 implemented on `feature/vga-timing`: added `rtl/video/vga_timing.sv` and `sim/tb_vga_timing.sv` with MM3772 headers and VGA 640x480 timing logic from `CLOCK_50`. | Complete |
+| EV-003 | TBC | 4.1 | Questa Simulation | Waveform captures and simulation transcript for timing generator verification suite. | Planned |
 | EV-004 | TBC | 4.1 | Quartus Compilation | Synthesis/Fitter/Timing report excerpts demonstrating implementable design. | Planned |
 | EV-005 | TBC | 4.1, 1.10 | Hardware Video | VGA output demonstration on FPGA board with MM3772 visible in evidence title/frame. | Planned |
 | EV-006 | TBC | 1.10 | GitHub Artifacts | Linked issue, branch, commits, review notes, and merge trail for each milestone. | Planned |

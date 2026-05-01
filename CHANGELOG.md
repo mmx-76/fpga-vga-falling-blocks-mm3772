@@ -3,6 +3,12 @@
 All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
+### Added
+- Implemented VGA timing generator module in `rtl/video/vga_timing.sv` for 640x480 timing generation from `CLOCK_50` with a 25 MHz pixel enable.
+- Added Questa-compatible testbench in `sim/tb_vga_timing.sv` to verify counter progression, visible-area signaling, and HSYNC/VSYNC pulse windows.
+
+### Changed
+- Updated evidence artifacts to include Issue #1 implementation traceability for MM3772.
 
 ## [0.1.0] - 2026-05-01
 ### Added
