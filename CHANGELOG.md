@@ -4,6 +4,8 @@ All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
 ### Added
+- Added player button input-conditioning modules in `rtl/input/button_debounce.sv`, `rtl/input/edge_detect.sv`, and `rtl/input/player_button_inputs.sv` for active-low FPGA push buttons with debounce and one-cycle pulse generation.
+- Added Questa-compatible testbench in `sim/tb_button_inputs.sv` to verify bounced raw inputs are converted into single-cycle clean pulses for left/right/down/reset.
 - Implemented VGA timing generator module in `rtl/video/vga_timing.sv` for 640x480 timing generation from `CLOCK_50` with a 25 MHz pixel enable.
 - Added Questa-compatible testbench in `sim/tb_vga_timing.sv` to verify counter progression, visible-area signaling, and HSYNC/VSYNC pulse windows.
 - Implemented static VGA pixel renderer in `rtl/video/pixel_renderer.sv` with a visible playfield border, grid-style background pattern, and a hard-coded on-screen `MM3772` marker.
@@ -13,6 +15,7 @@ All notable project and evidence-plan changes are documented in this file.
 ### Changed
 - Updated evidence artifacts to include Issue #1 implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #2 static VGA renderer implementation traceability for MM3772.
+- Updated evidence artifacts to include Issue #3 button debounce and edge-detection implementation traceability for MM3772.
 
 ## [0.1.0] - 2026-05-01
 ### Added
