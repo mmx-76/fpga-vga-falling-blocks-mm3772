@@ -15,6 +15,8 @@ module falling_block_controller #(
     input  logic left_pulse,
     input  logic right_pulse,
     input  logic down_pulse,
+    input  logic can_move_down,
+    output logic lock_pulse,
     output logic [4:0] block_x,
     output logic [4:0] block_y,
     output logic [GRID_ROWS*GRID_COLS-1:0] board_flat,
