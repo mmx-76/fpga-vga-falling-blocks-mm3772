@@ -35,6 +35,8 @@ module pixel_renderer #(
     logic [9:0] mx, my;
 
     always_comb begin
+        cell_x = '0;
+        cell_y = '0;
         in_playfield = (pixel_x >= X_MIN) && (pixel_x <= X_MAX) && (pixel_y >= Y_MIN) && (pixel_y <= Y_MAX);
         on_border = in_playfield && ((pixel_x < (X_MIN + BORDER)) || (pixel_x > (X_MAX - BORDER)) || (pixel_y < (Y_MIN + BORDER)) || (pixel_y > (Y_MAX - BORDER)));
         grid_line = in_playfield && (((pixel_x - X_MIN) % CELL_SIZE == 0) || ((pixel_y - Y_MIN) % CELL_SIZE == 0));
@@ -54,7 +56,7 @@ module pixel_renderer #(
             end
         end
 
-        on_score = (pixel_y >= 10) && (pixel_y < 22) && (pixel_x >= 160) && (pixel_x < (160 + {6'd0, score[7:0]}));
+        on_score = (pixel_y >= 10) && (pixel_y < 22) && (pixel_x >= 160) && (pixel_x < (10'd160 + {2'b00, score[7:0]}));
         on_gameover = (game_state == 2'd2) && (pixel_x >= 200) && (pixel_x < 440) && (pixel_y >= 220) && (pixel_y < 260);
 
         in_marker = (pixel_x >= MARKER_X0) && (pixel_x < (MARKER_X0 + 96)) &&
