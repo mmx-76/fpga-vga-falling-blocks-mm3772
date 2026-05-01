@@ -31,3 +31,5 @@ Student ID: **MM3772**
 - Evidence should be captured in chronological order to support assessment traceability.
 
 - Issue #6 milestone evidence currently includes source-level and Questa testbench-level verification in-repo; full tool execution logs are dependent on local Questa/Quartus availability.
+
+- 2026-05-01: Quartus Prime Analysis & Synthesis currently fails on this branch baseline due to duplicate declarations/instances and top-level syntax errors in `rtl/video/pixel_renderer.sv` and `rtl/top/FallingBlocksTop.sv`; fixes are now committed on `fix/quartus-analysis-synthesis-errors`, and Quartus Analysis & Synthesis must be re-run after merge to capture updated EV-006 evidence for MM3772.

@@ -30,6 +30,7 @@ All notable project and evidence-plan changes are documented in this file.
 - Added Questa-compatible testbenches `sim/tb_board_memory.sv` and `sim/tb_collision_checker.sv`; updated `sim/tb_falling_block_controller.sv` and `sim/tb_pixel_renderer.sv` for board-memory/collision behaviour coverage.
 
 ### Changed
+- 2026-05-01 (fix/quartus-analysis-synthesis-errors): Resolved Quartus Analysis & Synthesis compile blockers by removing duplicate declarations in `rtl/video/pixel_renderer.sv` and consolidating `rtl/top/FallingBlocksTop.sv` to one valid integration path with single instances of `falling_block_controller`, `vga_timing`, and `pixel_renderer`.
 - Updated `CHANGELOG.md` and `EVIDENCE_LOG.md` with final hardware validation/evidence packaging traceability for Issue #8 (MM3772).
 - Updated evidence artifacts to include Issue #5 board memory and collision-locking implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #4 stage-1 falling block core implementation traceability for MM3772.
