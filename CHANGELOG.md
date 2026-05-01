@@ -16,7 +16,13 @@ All notable project and evidence-plan changes are documented in this file.
 - Added top-level static integration module in `rtl/top/FallingBlocksTop.sv` wiring `CLOCK_50` and `reset_n` to `vga_timing` and routing timing coordinates to `pixel_renderer` for VGA color output.
 - Added Questa-compatible testbench in `sim/tb_pixel_renderer.sv` to check border, grid, playfield fill, marker, and blanking color cases.
 
+- Added board memory module `rtl/game/board_memory.sv` and collision checker module `rtl/game/collision_checker.sv` to support locked-cell storage and downward collision checks for stage-2 gameplay.
+- Updated `rtl/game/falling_block_controller.sv` to lock active blocks when downward movement is blocked and respawn a new block at top-centre.
+- Updated `rtl/video/pixel_renderer.sv` and `rtl/top/FallingBlocksTop.sv` to route board-cell memory and render locked blocks alongside the active falling block.
+- Added Questa-compatible testbenches `sim/tb_board_memory.sv` and `sim/tb_collision_checker.sv`; updated `sim/tb_falling_block_controller.sv` and `sim/tb_pixel_renderer.sv` for board-memory/collision behaviour coverage.
+
 ### Changed
+- Updated evidence artifacts to include Issue #5 board memory and collision-locking implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #4 stage-1 falling block core implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #1 implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #2 static VGA renderer implementation traceability for MM3772.
