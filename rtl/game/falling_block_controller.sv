@@ -91,18 +91,21 @@ module falling_block_controller #(
         logic [4:0] rows_cleared;
 
         if (!reset_n) begin
+            lock_pulse <= 1'b0;
             block_x <= START_X[4:0];
             block_y <= START_Y[4:0];
             board_flat <= '0;
             score <= '0;
             game_state <= STATE_START;
         end else if (reset_pulse) begin
+            lock_pulse <= 1'b0;
             block_x <= START_X[4:0];
             block_y <= START_Y[4:0];
             board_flat <= '0;
             score <= '0;
             game_state <= STATE_START;
         end else begin
+            lock_pulse <= 1'b0;
             case (game_state)
                 STATE_START: begin
                     game_state <= STATE_RUNNING;
@@ -123,6 +126,7 @@ module falling_block_controller #(
                         block_x <= next_x;
                         block_y <= next_y + 5'd1;
                     end else if (drop_req && blocked_below) begin
+                        lock_pulse <= 1'b1;
                         board_after_lock = board_flat;
                         board_after_lock[next_y*GRID_COLS + next_x] = 1'b1;
                         clear_rows(board_after_lock, board_after_clear, rows_cleared);
