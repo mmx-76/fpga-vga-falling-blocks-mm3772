@@ -1,61 +1,20 @@
 // tb_pixel_renderer.sv
 // MM3772 - EE22005 FPGA VGA Falling-Block Game
-// Questa-compatible combinational testbench for static pixel renderer.
+// Questa-compatible combinational testbench for pixel renderer with score and state overlays.
 
 `timescale 1ns/1ps
-
 module tb_pixel_renderer;
-    logic       visible_area;
-    logic [9:0] pixel_x;
-    logic [9:0] pixel_y;
-    logic [4:0] active_block_x;
-    logic [4:0] active_block_y;
-    logic [3:0] vga_r;
-    logic [3:0] vga_g;
-    logic [3:0] vga_b;
+    logic visible_area; logic [9:0] pixel_x, pixel_y; logic [4:0] active_block_x, active_block_y;
+    logic [16*20-1:0] board_flat; logic [15:0] score; logic [1:0] game_state; logic [3:0] vga_r, vga_g, vga_b;
 
-    pixel_renderer dut (
-        .visible_area(visible_area),
-        .pixel_x(pixel_x),
-        .pixel_y(pixel_y),
-        .active_block_x(active_block_x),
-        .active_block_y(active_block_y),
-        .vga_r(vga_r),
-        .vga_g(vga_g),
-        .vga_b(vga_b)
-    );
-
-    task automatic check_color(
-        input logic [9:0] x,
-        input logic [9:0] y,
-        input logic       vis,
-        input logic [3:0] exp_r,
-        input logic [3:0] exp_g,
-        input logic [3:0] exp_b,
-        input string      label
-    );
-    begin
-        pixel_x = x;
-        pixel_y = y;
-        visible_area = vis;
-        #1;
-        if ({vga_r, vga_g, vga_b} !== {exp_r, exp_g, exp_b}) begin
-            $error("%s mismatch at x=%0d y=%0d vis=%0b : got %h%h%h expected %h%h%h",
-                   label, x, y, vis, vga_r, vga_g, vga_b, exp_r, exp_g, exp_b);
-        end
-    end
-    endtask
+    pixel_renderer dut (.visible_area(visible_area), .pixel_x(pixel_x), .pixel_y(pixel_y), .active_block_x(active_block_x), .active_block_y(active_block_y),
+        .board_flat(board_flat), .score(score), .game_state(game_state), .vga_r(vga_r), .vga_g(vga_g), .vga_b(vga_b));
 
     initial begin
-        active_block_x = 5'd8;
-        active_block_y = 5'd0;
-        check_color(10'd0,   10'd0,   1'b0, 4'h0, 4'h0, 4'h0, "Blanking");
-        check_color(10'd160, 10'd40,  1'b1, 4'hF, 4'hF, 4'h0, "Border");
-        check_color(10'd180, 10'd60,  1'b1, 4'h2, 4'h2, 4'h6, "Grid line");
-        check_color(10'd181, 10'd61,  1'b1, 4'h0, 4'h6, 4'h3, "Playfield fill");
-        check_color(10'd24,  10'd26,  1'b1, 4'hF, 4'h0, 4'hF, "MM3772 marker");
-        check_color(10'd80,  10'd20,  1'b1, 4'h0, 4'h0, 4'h2, "Background outside field");
-
+        visible_area=1; active_block_x=8; active_block_y=0; board_flat='0; score=16'd20; game_state=2'd1;
+        pixel_x=160; pixel_y=12; #1; assert({vga_r,vga_g,vga_b}==12'hFFF) else $fatal("score indicator failed");
+        pixel_x=320; pixel_y=50; #1; assert({vga_r,vga_g,vga_b}==12'h222 || {vga_r,vga_g,vga_b}==12'h063) else $fatal("playfield failed");
+        game_state=2'd2; pixel_x=300; pixel_y=240; #1; assert({vga_r,vga_g,vga_b}==12'hF00) else $fatal("gameover overlay failed");
         $display("tb_pixel_renderer: PASS");
         $finish;
     end

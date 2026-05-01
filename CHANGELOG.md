@@ -4,6 +4,11 @@ All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
 ### Added
+- Issue #6 (`feature/line-clear-score-state`): added `rtl/game/line_clearer.sv` for synthesizable full-row detection, clear, and row-compaction logic.
+- Issue #6: expanded `rtl/game/falling_block_controller.sv` with settled-board tracking, collision against settled cells, line clearing on lock, score increment on clears, and basic game states (start/running/game over) with spawn-blocked game-over detection.
+- Issue #6: updated `rtl/video/pixel_renderer.sv` and `rtl/top/FallingBlocksTop.sv` to render settled board cells plus simple score/game-over indicators on VGA.
+- Issue #6: added Questa-compatible `sim/tb_line_clearer.sv` and `sim/tb_game_state.sv`, and updated `sim/tb_pixel_renderer.sv` for score/state rendering checks.
+### Added
 - Added stage-1 falling block controller in `rtl/game/falling_block_controller.sv` with grid-based active block state, gravity tick descent, button-pulse movement, playfield boundary clamping, and bottom respawn behaviour.
 - Added Questa-compatible gameplay testbench in `sim/tb_falling_block_controller.sv` covering reset, gravity motion, left/right/down moves, boundary clamping, and bottom respawn checks.
 - Updated `rtl/video/pixel_renderer.sv` to draw the active falling block cell from controller grid coordinates while preserving existing border/grid/background/marker rendering.

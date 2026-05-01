@@ -19,8 +19,11 @@ Student ID: **MM3772**
 | EV-006 | TBC | 4.1 | Quartus Compilation | Synthesis/Fitter/Timing report excerpts demonstrating implementable design. | Planned |
 | EV-007 | TBC | 4.1, 1.10 | Hardware Video | VGA output demonstration on FPGA board with MM3772 visible in evidence title/frame. | Planned |
 | EV-008 | TBC | 1.10 | GitHub Artifacts | Linked issue, branch, commits, review notes, and merge trail for each milestone. | Planned |
+| EV-009 | 2026-05-01 | 4.1, 1.10 | Source + Testbench + Commit History | GitHub Issue #6 implemented on `feature/line-clear-score-state`: added line-clear module and game-state/score-enabled gameplay pipeline (`line_clearer`, updated controller, top, and renderer) with Questa-compatible verification for full-row detect, clear+shift, score increment, and spawn-blocked game-over behaviour. | Complete |
 
 ## Evidence Handling Notes
 - Each milestone should update this table and cross-reference commit hash and pull request number.
 - File/report naming should include `MM3772` where practical.
 - Evidence should be captured in chronological order to support assessment traceability.
+
+- Issue #6 milestone evidence currently includes source-level and Questa testbench-level verification in-repo; full tool execution logs are dependent on local Questa/Quartus availability.
