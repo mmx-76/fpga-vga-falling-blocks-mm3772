@@ -4,6 +4,7 @@ All notable project and evidence-plan changes are documented in this file.
 
 ## [Unreleased]
 ### Added
+- Added final evidence package documentation for Issue #8 on `docs/final-evidence-package`, including `docs/final_hardware_validation.md`, `docs/video_demo_script.md`, `docs/mahara_evidence_summary.md`, and `docs/change_management_evidence_summary.md` for MM3772 final submission readiness.
 - Added stage-1 falling block controller in `rtl/game/falling_block_controller.sv` with grid-based active block state, gravity tick descent, button-pulse movement, playfield boundary clamping, and bottom respawn behaviour.
 - Added Questa-compatible gameplay testbench in `sim/tb_falling_block_controller.sv` covering reset, gravity motion, left/right/down moves, boundary clamping, and bottom respawn checks.
 - Updated `rtl/video/pixel_renderer.sv` to draw the active falling block cell from controller grid coordinates while preserving existing border/grid/background/marker rendering.
@@ -22,6 +23,7 @@ All notable project and evidence-plan changes are documented in this file.
 - Added Questa-compatible testbenches `sim/tb_board_memory.sv` and `sim/tb_collision_checker.sv`; updated `sim/tb_falling_block_controller.sv` and `sim/tb_pixel_renderer.sv` for board-memory/collision behaviour coverage.
 
 ### Changed
+- Updated `CHANGELOG.md` and `EVIDENCE_LOG.md` with final hardware validation/evidence packaging traceability for Issue #8 (MM3772).
 - Updated evidence artifacts to include Issue #5 board memory and collision-locking implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #4 stage-1 falling block core implementation traceability for MM3772.
 - Updated evidence artifacts to include Issue #1 implementation traceability for MM3772.

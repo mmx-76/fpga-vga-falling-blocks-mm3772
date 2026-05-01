@@ -21,6 +21,8 @@ Student ID: **MM3772**
 | EV-007 | TBC | 4.1, 1.10 | Hardware Video | VGA output demonstration on FPGA board with MM3772 visible in evidence title/frame. | Planned |
 | EV-008 | TBC | 1.10 | GitHub Artifacts | Linked issue, branch, commits, review notes, and merge trail for each milestone. | Planned |
 
+| EV-010 | 2026-05-01 | 4.1, 1.10 | Documentation + Commit History | GitHub Issue #8 implemented on `docs/final-evidence-package`: produced final hardware validation checklist, demo script, Mahara evidence summary, and change-management evidence summary; updated changelog/evidence log for MM3772 final packaging. | Complete |
+
 ## Evidence Handling Notes
 - Each milestone should update this table and cross-reference commit hash and pull request number.
 - File/report naming should include `MM3772` where practical.
